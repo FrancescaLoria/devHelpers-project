@@ -52,4 +52,16 @@ class User extends Authenticatable
     public function technologies() {
         return $this->belongsToMany(Technology::class);
     }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
+
+    public function messsages() {
+        return $this->hasMany(Message::class);
+    }
+
+    public function subscriptions() {
+        return $this->belongsToMany(Subscription::class);
+    }
 }
