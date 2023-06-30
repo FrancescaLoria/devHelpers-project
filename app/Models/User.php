@@ -19,8 +19,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'address',
         'email',
         'password',
+        'github',
+        'photo',
+        'phone',
+        'description',
+        'skills'
     ];
 
     /**
@@ -41,4 +48,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function technologies() {
+        return $this->belongsToMany(Technology::class);
+    }
 }
