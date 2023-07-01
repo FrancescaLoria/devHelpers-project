@@ -25,8 +25,9 @@
                             </div>
                         </div>
 
+
                         <div class="mb-4 row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('surname') }}</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
@@ -38,6 +39,64 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="mb-4 row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="github" class="col-md-4 col-form-label text-md-right">{{ __('github') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="github" type="text" class="form-control"  name="github" value="{{ old('github') }}" required autocomplete="github" autofocus>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('photo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="photo" type="text" class="form-control" name="photo" value="{{ old('photo') }}" required autocomplete="photo" autofocus>
+
+                            
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('phone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>                        
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="desrcription" class="col-md-4 col-form-label text-md-right">{{ __('desrcription') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="description" id="desription"rows="10"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('skills') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="skills" id="skills"></textarea>
+                            </div>
+                        </div>
+
 
                         <div class="mb-4 row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
