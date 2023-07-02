@@ -15,6 +15,17 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function index()
+    // {
+    //     $user = User::findOrFail(Auth::user()->id);
+    //     return view('admin.devhelpers.index', compact('user'));
+    // }
+
     /**
      * Display the registration view.
      */

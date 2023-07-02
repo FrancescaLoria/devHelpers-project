@@ -58,7 +58,7 @@
                             <label for="github" class="col-md-4 col-form-label text-md-right">{{ __('github') }}</label>
 
                             <div class="col-md-6">
-                                <input id="github" type="text" class="form-control"  name="github" value="{{ old('github') }}" required autocomplete="github" autofocus>
+                                <input id="github" type="text" class="form-control"  name="github" value="{{ old('github') }}">
 
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('photo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="photo" type="text" class="form-control" name="photo" value="{{ old('photo') }}" required autocomplete="photo" autofocus>
+                                <input id="photo" type="text" class="form-control" name="photo" value="{{ old('photo') }}">
 
                             
                             </div>
@@ -77,7 +77,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>                        
+                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}">                        
                             </div>
                         </div>
 
