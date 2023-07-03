@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return redirect()->route('admin.devhelpers.index')->with('message', "Your profile is been modified");
+        return Redirect::route('admin.dashboard')->with('status', 'profile-updated');
     }
 
     /**
