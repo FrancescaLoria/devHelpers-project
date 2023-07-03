@@ -12,6 +12,5 @@
 
 <a href="{{ route('profile.edit') }}" class="btn btn-info m-1">
   Edit
- 
 </a>
 @endsection
