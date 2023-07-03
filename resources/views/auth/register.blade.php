@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-4 row">
@@ -67,9 +67,7 @@
                             <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('photo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="photo" type="text" class="form-control" name="photo" value="{{ old('photo') }}">
-
-                            
+                                <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}">
                             </div>
                         </div>
 

@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -47,18 +48,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        $data = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'surname' => $request->surname,
             'address' => $request->address,
             'github' => $request->github,
-            'photo' =>$request->photo,
             'phone' => $request->phone,
             'description' => $request->description,
             'skills' => $request->skills,
-        ]);
+        ];
+
+        if ($request->hasFile('photo')) {
+            $path = Storage::disk('public')->put('developers_images', $request->photo);
+            $data['photo'] = $path;
+        }
+
+        $user = User::create($data);
 
         event(new Registered($user));
 
