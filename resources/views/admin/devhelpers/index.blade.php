@@ -17,5 +17,13 @@
                 </div>
             @endif
         </div>
+        <div class="mt-4">
+            <h4>Tecnologie</h4>
+            @forelse ($user->technologies as $technology)
+                <span>{{ $technology->name }} {{ $loop->last ? '' : ',' }}</span>
+            @empty
+                <span>Nessuna tecnologia inserita</span>
+            @endforelse
+        </div>
     </div>
 @endsection
