@@ -14,10 +14,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $user = User::findOrFail(Auth::user()->id);
-        return view('admin.devhelpers.index', compact('user'));
+    public function index () {
+        // $user = Auth::user();
+        // return view('admin.devhelpers.index', compact('user'));
     }
 
     /**
