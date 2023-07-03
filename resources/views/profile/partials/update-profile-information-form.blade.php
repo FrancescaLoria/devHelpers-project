@@ -28,6 +28,41 @@
         </div>
 
         <div class="mb-2">
+            <label for="surname">{{__('Surname')}}</label>
+            <input class="form-control" type="text" name="surname" id="surname" autocomplete="surname" value="{{old('surname', $user->surname)}}" required autofocus>
+        </div>
+
+        <div class="mb-2">
+            <label for="address">{{__('Address')}}</label>
+            <input class="form-control" type="text" name="address" id="address" autocomplete="address" value="{{old('address', $user->address)}}" required autofocus>
+        </div>
+
+        <div class="mb-2">
+            <label for="github">{{__('GitHub')}}</label>
+            <input class="form-control" type="text" name="github" id="github" value="{{old('github', $user->github)}}"  autofocus>
+        </div>
+
+        <div class="mb-2">
+            <label for="photo">{{__('Photo')}}</label>
+            <input class="form-control" type="text" name="photo" id="photo" value="{{old('photo', $user->photo)}}" autofocus>
+        </div>
+
+        <div class="mb-2">
+            <label for="phone">{{__('Phone')}}</label>
+            <input class="form-control" type="text" name="phone" id="phone" value="{{old('phone', $user->phone)}}" autofocus autocomplete="phone">
+        </div>
+
+        <div class="mb-2">
+            <label for="description">{{__('Description')}}</label>
+            <input class="form-control" type="text" name="description" id="description" value="{{old('description', $user->description)}}" autofocus>
+        </div>
+
+        <div class="mb-2">
+            <label for="skills">{{__('Skills')}}</label>
+            <input class="form-control" type="text" name="skills" id="skills" autocomplete="skills" value="{{old('skills', $user->skills)}}" required autofocus>
+        </div>
+
+        <div class="mb-2">
             <label for="email">
                 {{__('Email') }}
             </label>
