@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <a href="{{ route('profile.edit') }}" class="btn btn-info m-1">
+    <a href="{{ route('admin.profile.edit') }}" class="btn btn-info m-1">
         Edit
     </a>
 @endsection
