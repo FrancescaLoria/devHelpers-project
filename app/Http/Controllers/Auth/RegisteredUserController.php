@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
     // public function index()
     // {
     //     $user = User::findOrFail(Auth::user()->id);
-    //     return view('admin.devhelpers.index', compact('user'));
+    //     return view('admin.dashboard', compact('user'));
     // }
 
     /**
