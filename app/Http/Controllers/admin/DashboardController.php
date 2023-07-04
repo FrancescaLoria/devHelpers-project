@@ -18,7 +18,8 @@ class DashboardController extends Controller
 
     public function edit()
     {
-        return view('profile.complete');
+        $user = Auth::user();
+        return view('profile.complete', compact('user'));
     }
 
     
