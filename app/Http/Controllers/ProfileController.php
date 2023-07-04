@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Technology;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -16,9 +19,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $technologies = Technology::all();
         return view('profile.edit', [
             'user' => $request->user(),
-        ]);
+        ], compact('technologies'));
     }
 
     /**
@@ -26,11 +30,25 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        dd($request);
         $request->user()->fill($request->validated());
-
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+
+        if ($request->hasFile('photo')) {
+            if (Auth::user()->photo) {
+                Storage::delete(Auth::user()->photo);
+            }
+            $path = Storage::disk('public')->put('developers_images', $request->photo);
+            $data['photo'] = $path;
+        }
+
+        // if ($request->has('techs')) {
+        //     Auth::user()->technologies()->sync($request->techs);
+        // }else {
+        //     Auth::user()->technologies()->detach();
+        // }
 
         $request->user()->save();
 
