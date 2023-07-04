@@ -11,7 +11,7 @@
                 <label for="github" class="col-md-4 col-form-label text-md-right">{{ __('github') }}</label>
 
                 <div class="col-md-6">
-                    <input id="github" type="text" class="form-control" name="github" value="{{ old('github') }}">
+                    <input id="github" type="text" class="form-control" name="github" value="{{ old('github', $user->github) }}">
 
                 </div>
             </div>

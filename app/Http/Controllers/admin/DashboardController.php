@@ -24,7 +24,7 @@ class DashboardController extends Controller
     
     public function update(Request $request, User $user)
     {
-        // $user = Auth::user();
+        $user = User::where('id', Auth::id())->first();
         // dd($request);
         // dd($user);
         $user->update($request->all());
