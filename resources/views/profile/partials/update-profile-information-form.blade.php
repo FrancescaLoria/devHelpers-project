@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update', $user) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -46,10 +46,16 @@
                 value="{{ old('github', $user->github) }}" autofocus>
         </div>
 
+
         <div class="mb-2">
-            <label for="photo">{{ __('Photo') }}</label>
-            <input class="form-control" type="file" name="photo" id="photo"
-                value="{{ old('photo', $user->photo) }}" autofocus>
+            <label for="photo" class="form-label">Foto</label>
+            <input type="file" class="form-control" id="photo" name="photo">
+
+            @if ($user->photo)
+                <div>
+                    <img width="300" src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->photo }}">
+                </div>
+            @endif
         </div>
 
         <div class="mb-2">
@@ -83,6 +89,16 @@
                     <strong>{{ $errors->get('email') }}</strong>
                 </span>
             @enderror
+
+            @foreach ($technologies as $tech)
+                <div class="form-check">
+                    <input class="form-check-input" name="techs[]" type="checkbox" value="{{ $tech->id }}"
+                        id="tech-{{ $tech->id }}" @checked(old('techs') ? in_array($tech->id, old('techs', [])) : $user->technologies->contains($tech))>
+                    <label class="form-check-label" for="tech-{{ $tech->id }}">
+                        {{ $tech->name }}
+                    </label>
+                </div>
+            @endforeach
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
