@@ -11,6 +11,15 @@
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
+                            @if ($errors->any())
+                                <ul class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <li class="ms-2">{{ $error }}</li>
+                                    @endforeach
+
+                                </ul>
+                            @endif
+
                             <div class="text-secondary my-2">
                                 I campi con * sono obbligatori
                             </div>
@@ -22,7 +31,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -39,7 +48,7 @@
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
                                         class="form-control @error('surname') is-invalid @enderror" name="surname"
-                                        value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                                        value="{{ old('surname') }}" autocomplete="surname" autofocus>
 
                                     @error('surname')
                                         <span class="invalid-feedback" role="alert">
@@ -56,7 +65,7 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                        value="{{ old('address') }}" autocomplete="address" autofocus>
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -73,7 +82,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email') }}" autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -90,7 +99,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                        autocomplete="new-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -106,21 +115,27 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
+                                        name="password_confirmation" autocomplete="new-password">
                                 </div>
                             </div>
 
                             <h5>Scegli i tuoi linguaggi: *</h5>
                             @foreach ($technologies as $tech)
                                 <div class="form-check">
-                                    <input class="form-check-input" name="techs[]" type="checkbox"
-                                        value="{{ $tech->id }}" id="tech-{{ $tech->id }}"
-                                        @checked(in_array($tech->id, old('techs', [])))>
+                                    <input class="form-check-input @error('technologies') is-invalid @enderror"
+                                        name="techs[]" type="checkbox" value="{{ $tech->id }}"
+                                        id="tech-{{ $tech->id }}" @checked(in_array($tech->id, old('techs', [])))>
                                     <label class="form-check-label" for="tech-{{ $tech->id }}">
                                         {{ $tech->name }}
                                     </label>
                                 </div>
                             @endforeach
+
+                            @error('technologies')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
                             <div class="mb-4 row mb-0">
                                 <div class="text-end mt-2">
