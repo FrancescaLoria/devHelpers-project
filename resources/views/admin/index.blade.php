@@ -58,7 +58,9 @@
         Edit
     </a>
 
-    <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning m-1">
-        Completa il tuo profilo
-    </a>
+    @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
+        <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning m-1">
+            Complete your profile
+        </a>
+    @endif
 @endsection

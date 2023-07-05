@@ -6,60 +6,69 @@
             @method('PUT')
             <div class="my-3 d-flex justify-content-between align-items-center">
                 <h2>Completa il tuo profilo</h2>
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Torna alla dashboard</a>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Go to dashboard</a>
             </div>
 
             {{-- Github --}}
             <div class="mb-4 row">
-                <label for="github" class="col-md-4 col-form-label text-md-right">{{ __('Github') }}</label>
+                @if (!$user->github)
+                    <label for="github" class="col-md-4 col-form-label text-md-right">{{ __('Github') }}</label>
 
-                <div class="col-md-6">
-                    <input id="github" type="text" class="form-control" name="github"
-                        value="{{ old('github', $user->github) }}">
-
-                </div>
+                    <div class="col-md-6">
+                        <input id="github" type="text" class="form-control" name="github"
+                            value="{{ old('github', $user->github) }}">
+                    </div>
+                @endif
             </div>
             {{-- End  Github --}}
 
             {{-- Photo --}}
             <div class="mb-4 row">
-                <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
+                @if (!$user->photo)
+                    <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
 
-                <div class="col-md-6">
-                    <input id="photo" type="file" class="form-control" name="photo"
-                        value="{{ old('photo', $user->photo) }}">
-                </div>
+                    <div class="col-md-6">
+                        <input id="photo" type="file" class="form-control" name="photo"
+                            value="{{ old('photo', $user->photo) }}">
+                    </div>
+                @endif
             </div>
             {{-- End Photo --}}
 
             {{-- Phone --}}
             <div class="mb-4 row">
-                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                @if (!$user->phone)
+                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
-                <div class="col-md-6">
-                    <input id="phone" type="text" class="form-control" name="phone"
-                        value="{{ old('phone', $user->phone) }}">
-                </div>
+                    <div class="col-md-6">
+                        <input id="phone" type="text" class="form-control" name="phone"
+                            value="{{ old('phone', $user->phone) }}">
+                    </div>
+                @endif
             </div>
             {{-- End Phone --}}
 
             {{-- Description --}}
             <div class="mb-4 row">
-                <label for="desrcription" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                @if (!$user->description)
+                    <label for="desrcription" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
-                <div class="col-md-6">
-                    <textarea name="description" id="description"rows="10">{{ $user->description }}</textarea>
-                </div>
+                    <div class="col-md-6">
+                        <textarea name="description" id="description"rows="10">{{ $user->description }}</textarea>
+                    </div>
+                @endif
             </div>
             {{-- End Description --}}
 
             {{-- Skills --}}
             <div class="mb-4 row">
-                <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('Skills') }}</label>
+                @if (!$user->skills)
+                    <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('Skills') }}</label>
 
-                <div class="col-md-6">
-                    <textarea name="skills" id="skills">{{ $user->skills }}</textarea>
-                </div>
+                    <div class="col-md-6">
+                        <textarea name="skills" id="skills">{{ $user->skills }}</textarea>
+                    </div>
+                @endif
             </div>
             {{-- End Skills --}}
 
