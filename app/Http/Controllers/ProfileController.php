@@ -28,7 +28,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request, User $user): RedirectResponse
     {
         // dd($request->validated());
         $request->user()->fill($request->validated());
@@ -44,11 +44,13 @@ class ProfileController extends Controller
             $data['photo'] = $path;
         }
 
-        // if ($request->has('techs')) {
-        //     Auth::user()->technologies()->sync($request->techs);
-        // }else {
-        //     Auth::user()->technologies()->detach();
-        // }
+        $user = User::where('id', Auth::id())->first();
+
+        if ($request->has('techs')) {
+            $user->technologies()->sync($request->techs);
+        }else {
+            $user->technologies()->detach();
+        }
 
         $request->user()->save();
 
