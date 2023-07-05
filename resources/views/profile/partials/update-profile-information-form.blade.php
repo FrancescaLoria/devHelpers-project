@@ -91,13 +91,8 @@
 
         <div class="mb-2">
             <label for="skills">{{ __('Skills') }}</label>
-            <input class="form-control @error('skills') is-invalid @enderror" type="text" name="skills"
-                id="skills" autocomplete="skills" value="{{ old('skills', $user->skills) }}" autofocus>
-            @error('skills')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <input class="form-control" type="text" name="skills" id="skills" autocomplete="skills"
+                value="{{ old('skills', $user->skills) }}" autofocus>
         </div>
 
         <div class="mb-2">
