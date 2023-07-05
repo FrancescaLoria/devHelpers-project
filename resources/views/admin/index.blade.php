@@ -30,4 +30,8 @@
     <a href="{{ route('admin.profile.edit') }}" class="btn btn-info m-1">
         Edit
     </a>
+
+    <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning m-1">
+        Completa il tuo profilo
+    </a>
 @endsection

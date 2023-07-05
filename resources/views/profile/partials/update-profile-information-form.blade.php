@@ -17,27 +17,46 @@
         @csrf
         @method('patch')
 
+        {{-- @if ($errors->any())
+            <ul class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+
+            </ul>
+        @endif --}}
+
         <div class="mb-2">
             <label for="name">{{ __('Name') }}</label>
-            <input class="form-control" type="text" name="name" id="name" autocomplete="name"
-                value="{{ old('name', $user->name) }}" required autofocus>
+            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name"
+                autocomplete="name" value="{{ old('name', $user->name) }}" autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->get('name') }}</strong>
+                    <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
 
         <div class="mb-2">
             <label for="surname">{{ __('Surname') }}</label>
-            <input class="form-control" type="text" name="surname" id="surname" autocomplete="surname"
-                value="{{ old('surname', $user->surname) }}" required autofocus>
+            <input class="form-control @error('surname') is-invalid @enderror" type="text" name="surname"
+                id="surname" autocomplete="surname" value="{{ old('surname', $user->surname) }}" autofocus>
+            @error('surname')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <div class="mb-2">
             <label for="address">{{ __('Address') }}</label>
-            <input class="form-control" type="text" name="address" id="address" autocomplete="address"
-                value="{{ old('address', $user->address) }}" required autofocus>
+            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address"
+                id="address" autocomplete="address" value="{{ old('address', $user->address) }}" autofocus>
+            @error('address')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <div class="mb-2">
@@ -48,7 +67,7 @@
 
 
         <div class="mb-2">
-            <label for="photo" class="form-label">Foto</label>
+            <label for="photo" class="form-label">Photo</label>
             <input type="file" class="form-control" id="photo" name="photo">
 
             @if ($user->photo)
@@ -73,7 +92,7 @@
         <div class="mb-2">
             <label for="skills">{{ __('Skills') }}</label>
             <input class="form-control" type="text" name="skills" id="skills" autocomplete="skills"
-                value="{{ old('skills', $user->skills) }}" required autofocus>
+                value="{{ old('skills', $user->skills) }}" autofocus>
         </div>
 
         <div class="mb-2">
@@ -81,24 +100,28 @@
                 {{ __('Email') }}
             </label>
 
-            <input id="email" name="email" type="email" class="form-control"
-                value="{{ old('email', $user->email) }}" required autocomplete="username" />
+            <input id="email" name="email" type="email"
+                class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}"
+                autocomplete="username" />
 
             @error('email')
-                <span class="alert alert-danger mt-2" role="alert">
-                    <strong>{{ $errors->get('email') }}</strong>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
                 </span>
             @enderror
 
-            @foreach ($technologies as $tech)
-                <div class="form-check">
-                    <input class="form-check-input" name="techs[]" type="checkbox" value="{{ $tech->id }}"
-                        id="tech-{{ $tech->id }}" @checked(old('techs') ? in_array($tech->id, old('techs', [])) : $user->technologies->contains($tech))>
-                    <label class="form-check-label" for="tech-{{ $tech->id }}">
-                        {{ $tech->name }}
-                    </label>
-                </div>
-            @endforeach
+            <div class="my-3">
+                <span class="mb-3">Technologies</span>
+                @foreach ($technologies as $tech)
+                    <div class="form-check">
+                        <input class="form-check-input" name="techs[]" type="checkbox" value="{{ $tech->id }}"
+                            id="tech-{{ $tech->id }}" @checked(old('techs') ? in_array($tech->id, old('techs', [])) : $user->technologies->contains($tech))>
+                        <label class="form-check-label" for="tech-{{ $tech->id }}">
+                            {{ $tech->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>

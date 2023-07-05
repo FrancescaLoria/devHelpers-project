@@ -11,9 +11,13 @@
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
+                            <div class="text-secondary my-2">
+                                I campi con * sono obbligatori
+                            </div>
+
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -30,7 +34,7 @@
 
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname *</label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -47,7 +51,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Address *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -63,58 +67,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="github"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('github') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="github" type="text" class="form-control" name="github"
-                                        value="{{ old('github') }}">
-
-                                </div>
-                            </div>
-
-                            <div class="mb-4 row">
-                                <label for="photo"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('photo') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="photo" type="file" class="form-control" name="photo"
-                                        value="{{ old('photo') }}">
-                                </div>
-                            </div>
-
-                            <div class="mb-4 row">
-                                <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('phone') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control" name="phone"
-                                        value="{{ old('phone') }}">
-                                </div>
-                            </div>
-
-                            <div class="mb-4 row">
-                                <label for="desrcription"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('desrcription') }}</label>
-
-                                <div class="col-md-6">
-                                    <textarea name="description" id="desription"rows="10"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="mb-4 row">
-                                <label for="skills"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('skills') }}</label>
-
-                                <div class="col-md-6">
-                                    <textarea name="skills" id="skills"></textarea>
-                                </div>
-                            </div>
-
-
-                            <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -131,7 +85,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -148,7 +102,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -156,7 +110,7 @@
                                 </div>
                             </div>
 
-                            <h5>Scegli i tuoi linguaggi:</h5>
+                            <h5>Scegli i tuoi linguaggi: *</h5>
                             @foreach ($technologies as $tech)
                                 <div class="form-check">
                                     <input class="form-check-input" name="techs[]" type="checkbox"
@@ -169,7 +123,7 @@
                             @endforeach
 
                             <div class="mb-4 row mb-0">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="text-end mt-2">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>

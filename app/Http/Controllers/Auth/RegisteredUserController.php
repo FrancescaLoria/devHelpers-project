@@ -56,16 +56,13 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'surname' => $request->surname,
             'address' => $request->address,
-            'github' => $request->github,
-            'phone' => $request->phone,
-            'description' => $request->description,
-            'skills' => $request->skills,
+
         ];
 
-        if ($request->hasFile('photo')) {
-            $path = Storage::disk('public')->put('developers_images', $request->photo);
-            $data['photo'] = $path;
-        }
+        // if ($request->hasFile('photo')) {
+        //     $path = Storage::disk('public')->put('developers_images', $request->photo);
+        //     $data['photo'] = $path;
+        // }
 
         
         $user = User::create($data);
