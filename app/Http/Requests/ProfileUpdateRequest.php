@@ -20,7 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'surname' => ['required', 'string', 'max:50'],
             'address' => ['required', 'string', 'max:255'],
             'github' => ['nullable', 'string',],
-            'photo' => ['nullable', 'string',],
+            'photo' => ['nullable', 'image',],
             'phone' => ['nullable', 'string', 'max:20'],
             'description' => ['nullable', 'string'],
             'skills' => ['nullable', 'string'],

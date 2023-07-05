@@ -30,29 +30,28 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request, User $user): RedirectResponse
     {
-        // dd($request->validated());
-        $request->user()->fill($request->validated());
+        $data = $request->validated();
+        $user = User::where('id', Auth::id())->first();
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
         if ($request->hasFile('photo')) {
-            if (Auth::user()->photo) {
-                Storage::delete(Auth::user()->photo);
+            if ($user->photo) {
+                Storage::delete($user->photo);
             }
             $path = Storage::disk('public')->put('developers_images', $request->photo);
             $data['photo'] = $path;
         }
 
-        $user = User::where('id', Auth::id())->first();
 
         if ($request->has('techs')) {
             $user->technologies()->sync($request->techs);
         }else {
             $user->technologies()->detach();
         }
-
-        $request->user()->save();
+        
+        $user->update($data);
 
         return Redirect::route('admin.dashboard')->with('status', 'profile-updated');
     }
