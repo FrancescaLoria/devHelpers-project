@@ -23,7 +23,7 @@ class ProfileUpdateRequest extends FormRequest
             'photo' => ['nullable', 'string',],
             'phone' => ['nullable', 'string', 'max:20'],
             'description' => ['nullable', 'string'],
-            'skills' => ['required', 'string'],
+            'skills' => ['nullable', 'string'],
             'email' => ['email:rfc,dns', 'required', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
