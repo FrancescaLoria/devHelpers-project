@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -25,10 +26,18 @@ class DashboardController extends Controller
     
     public function update(Request $request, User $user)
     {
+        $data = $request->all();
         $user = User::where('id', Auth::id())->first();
         // dd($request);
         // dd($user);
-        $user->update($request->all());
+        if ($request->hasFile('photo')) {
+            
+            $path = Storage::disk('public')->put('developers_images', $request->photo);
+            $data['photo'] = $path;
+        }
+
+        $user->update($data);
+
 
         return Redirect::route('admin.dashboard')->with('status', 'profile-updated');
     }

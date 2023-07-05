@@ -29,6 +29,14 @@
                 <span>No skills avalaible</span>
             @endif
         </p>
+        <p>
+            Description:
+            @if ($user->description)
+                <span>{{ $user->description }}</span>
+            @else
+                <span>No description avalaible</span>
+            @endif
+        </p>
         <div class="developer-image my-3">
             @if ($user->photo)
                 <img width="300" src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->name }}">
