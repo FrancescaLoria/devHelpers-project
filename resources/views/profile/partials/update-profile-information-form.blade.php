@@ -17,14 +17,14 @@
         @csrf
         @method('patch')
 
-        {{-- @if ($errors->any())
+        @if ($errors->any())
             <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
 
             </ul>
-        @endif --}}
+        @endif
 
         <div class="mb-2">
             <label for="name">{{ __('Name') }}</label>
@@ -114,13 +114,20 @@
                 <span class="mb-3">Technologies</span>
                 @foreach ($technologies as $tech)
                     <div class="form-check">
-                        <input class="form-check-input" name="techs[]" type="checkbox" value="{{ $tech->id }}"
-                            id="tech-{{ $tech->id }}" @checked(old('techs') ? in_array($tech->id, old('techs', [])) : $user->technologies->contains($tech))>
+                        <input class="form-check-input @error('techs') is-invalid @enderror" name="techs[]"
+                            type="checkbox" value="{{ $tech->id }}" id="tech-{{ $tech->id }}"
+                            @checked(old('techs') ? in_array($tech->id, old('techs', [])) : $user->technologies->contains($tech))>
                         <label class="form-check-label" for="tech-{{ $tech->id }}">
                             {{ $tech->name }}
                         </label>
                     </div>
                 @endforeach
+
+                @error('techs')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())

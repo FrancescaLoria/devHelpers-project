@@ -25,14 +25,14 @@ class ProfileUpdateRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'skills' => ['nullable', 'string'],
             'email' => ['email:rfc,dns', 'required', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'techs' => ['required']
         ];
-    }
-
-    public function messages() {
-        return [
-            'name.required' => 'Le tecnologie sono obbligatorie'
-        ];
-    }
-
+    } 
     
+    public function messages()
+    {
+        return [
+            "techs.required" => "The technologies field is required."
+        ];
+    }
 }

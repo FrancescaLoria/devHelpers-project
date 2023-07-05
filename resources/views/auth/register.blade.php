@@ -122,16 +122,16 @@
                             <h5>Scegli i tuoi linguaggi: *</h5>
                             @foreach ($technologies as $tech)
                                 <div class="form-check">
-                                    <input class="form-check-input @error('technologies') is-invalid @enderror"
-                                        name="techs[]" type="checkbox" value="{{ $tech->id }}"
-                                        id="tech-{{ $tech->id }}" @checked(in_array($tech->id, old('techs', [])))>
+                                    <input class="form-check-input @error('techs') is-invalid @enderror" name="techs[]"
+                                        type="checkbox" value="{{ $tech->id }}" id="tech-{{ $tech->id }}"
+                                        @checked(in_array($tech->id, old('techs', [])))>
                                     <label class="form-check-label" for="tech-{{ $tech->id }}">
                                         {{ $tech->name }}
                                     </label>
                                 </div>
                             @endforeach
 
-                            @error('technologies')
+                            @error('techs')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

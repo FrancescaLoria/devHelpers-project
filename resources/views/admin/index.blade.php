@@ -4,10 +4,31 @@
     <div class="container">
         <h1>{{ $user->name }} {{ $user->surname }}</h1>
         <h6>Email: {{ $user->email }}</h6>
-        <p>indirizzo: {{ $user->address }}</p>
-        <p>github: {{ $user->github }}</p>
-        <p>cellulare: {{ $user->phone }}</p>
-        <p>Skills: {{ $user->skills }}</p>
+        <p>Address: {{ $user->address }}</p>
+        <p>
+            Github:
+            @if ($user->github)
+                <span>{{ $user->github }}</span>
+            @else
+                <span>No github profile avalaible</span>
+            @endif
+        </p>
+        <p>
+            Phone:
+            @if ($user->phone)
+                <span>{{ $user->phone }}</span>
+            @else
+                <span>No phone number avalaible</span>
+            @endif
+        </p>
+        <p>
+            Skills:
+            @if ($user->skills)
+                <span>{{ $user->skills }}</span>
+            @else
+                <span>No skills avalaible</span>
+            @endif
+        </p>
         <div class="developer-image my-3">
             @if ($user->photo)
                 <img width="300" src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->name }}">
@@ -18,12 +39,10 @@
             @endif
         </div>
         <div class="mt-4">
-            <h4>Tecnologie</h4>
-            @forelse ($user->technologies as $technology)
+            <h4>Technologies</h4>
+            @foreach ($user->technologies as $technology)
                 <span>{{ $technology->name }} {{ $loop->last ? '' : ',' }}</span>
-            @empty
-                <span>Nessuna tecnologia inserita</span>
-            @endforelse
+            @endforeach
         </div>
     </div>
 
