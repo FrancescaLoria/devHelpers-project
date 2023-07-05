@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CompleteProfileController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/complete-profile', [DashboardController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/complete-profile', [DashboardController::class, 'update'])->name('dashboard.update');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
