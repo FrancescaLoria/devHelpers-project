@@ -24,7 +24,7 @@ class ProfileUpdateRequest extends FormRequest
             'phone' => ['nullable', 'string', 'max:20'],
             'description' => ['nullable', 'string'],
             'skills' => ['nullable', 'string'],
-            'email' => ['email:rfc,dns,strict', 'required', 'email', 'max:255', 'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', Rule::unique(User::class)->ignore($this->user()->id)],
+            'email' => ['email:rfc,dns,strict', 'required', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'techs' => ['required']
         ];
     } 
