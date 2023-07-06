@@ -1,1 +1,15 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.bkg-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../../public/images/brooke-cagle-ICTKcvnXx_8-unsplash.jpg);
+}
+.welcome-bkg {
+    height: 100vh;
+}
+.navigation {
+    background-color: #FEFEE3;
+}
