@@ -21,7 +21,7 @@
                             @endif
 
                             <div class="text-secondary my-2">
-                                I campi con * sono obbligatori
+                                The fields with * are required
                             </div>
 
                             <div class="mb-4 row">
@@ -33,11 +33,16 @@
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" autocomplete="name" autofocus>
 
+                                    <div id="name-error" class="d-none invalid-feedback">
+                                        Inserisci il nome
+                                    </div>
+
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
                                 </div>
                             </div>
 
@@ -119,7 +124,7 @@
                                 </div>
                             </div>
 
-                            <h5>Scegli i tuoi linguaggi: *</h5>
+                            <h6>Choose your languages: *</h6>
                             @foreach ($technologies as $tech)
                                 <div class="form-check">
                                     <input class="form-check-input @error('techs') is-invalid @enderror" name="techs[]"
@@ -139,7 +144,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="text-end mt-2">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" id="btn-create">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

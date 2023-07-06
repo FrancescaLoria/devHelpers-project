@@ -30,7 +30,7 @@
         <div class="mb-2">
             <label for="name">{{ __('Name') }}</label>
             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name"
-                autocomplete="name" value="{{ old('name', $user->name) }}" autofocus>
+                autocomplete="name" value="{{ old('name', $user->name) }}" required autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
         <div class="mb-2">
             <label for="surname">{{ __('Surname') }}</label>
             <input class="form-control @error('surname') is-invalid @enderror" type="text" name="surname"
-                id="surname" autocomplete="surname" value="{{ old('surname', $user->surname) }}" autofocus>
+                id="surname" autocomplete="surname" value="{{ old('surname', $user->surname) }}" required autofocus>
             @error('surname')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
         <div class="mb-2">
             <label for="address">{{ __('Address') }}</label>
             <input class="form-control @error('address') is-invalid @enderror" type="text" name="address"
-                id="address" autocomplete="address" value="{{ old('address', $user->address) }}" autofocus>
+                id="address" autocomplete="address" value="{{ old('address', $user->address) }}" required autofocus>
             @error('address')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
