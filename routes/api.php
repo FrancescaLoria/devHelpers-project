@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TechnologyController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/developers', [UserController::class, 'index'] );
-Route::get('/developers/{id}', [UserController::class, 'show']);
+Route::get('/developers', [UserController::class, 'index'] ); // Quando non c'è l'id si prende l'intera tabella degli utenti (developer)
+Route::get('/developers/{id}', [UserController::class, 'index'] ); // Modificato da developers a developers/{id} perchè nell'url si passano gli id
+Route::get('/developer/{id}', [UserController::class, 'show']);  //Modifica da developers/{id} a developer/{id} per conflitto con quello sopra
+Route::get('/technologies', [TechnologyController::class, 'index']);
