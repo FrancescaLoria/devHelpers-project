@@ -22,7 +22,7 @@ class ReviewController extends Controller
             $developers = Review::join('users', 'reviews.user_id', '=', 'users.id')
             ->select('users.*',DB::Raw('AVG(reviews.vote) AS average_vote'))
             ->groupBy('reviews.user_id')
-            ->having('average_vote', '>', $AvgVote)
+            ->having('average_vote', '>=', $AvgVote)
             ->get();
             
             return response()->json([
