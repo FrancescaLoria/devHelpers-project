@@ -38,7 +38,7 @@ class UserController extends Controller
     }
 
     public function show($id){
-        $developer = User::with('technologies')->where('id', $id)->first();
+        $developer = User::with('technologies','review')->where('id', $id)->first();
         if ($developer) {
             return response()->json([
                 'success'=>true,
