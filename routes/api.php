@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\TechnologyController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -24,3 +25,5 @@ Route::get('/developers', [UserController::class, 'index'] ); // Quando non c'è
 Route::get('/developers/{id}', [UserController::class, 'index'] ); // Modificato da developers a developers/{id} perchè nell'url si passano gli id
 Route::get('/developer/{id}', [UserController::class, 'show']);  //Modifica da developers/{id} a developer/{id} per conflitto con quello sopra
 Route::get('/technologies', [TechnologyController::class, 'index']);
+Route::get('/reviews', [ReviewController::class, 'index']);
+Route::get('/reviews/{AvgVote}', [ReviewController::class, 'index']);
