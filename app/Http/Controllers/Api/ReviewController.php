@@ -12,6 +12,7 @@ class ReviewController extends Controller
 {
     public function index($AvgVote = null){
         if (empty($AvgVote)) {
+           
             $developers = Review::with('user')->get();
             
             return response()->json([
