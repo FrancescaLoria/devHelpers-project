@@ -32,4 +32,27 @@ class ReviewController extends Controller
             ]);
         }
     } 
+
+    public function show($comments = null){
+        if (empty($comments)) {
+           
+            $developers = Review::with('user')->get();
+            
+            return response()->json([
+                'success' => true,
+                'results' => $developers
+            ]);
+        } else {
+            $developers = Review::join('users', 'reviews.user_id', '=', 'users.id')
+            ->select('users.*',DB::Raw('COUNT(reviews.comment) AS count_comments'))
+            ->groupBy('reviews.user_id')
+            ->having('count_comments', '>=', $comments)
+            ->get();
+            
+            return response()->json([
+                'success' => true,
+                'results' => $developers
+            ]);
+        }
+    }
 }
