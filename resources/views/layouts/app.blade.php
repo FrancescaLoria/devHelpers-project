@@ -23,7 +23,7 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md shadow-sm navigation">
+        <nav class="navbar navbar-expand-md shadow-sm bkg-light">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                  <div class="logo fw-bold">DevHelpers</div>
