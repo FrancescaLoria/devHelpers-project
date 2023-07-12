@@ -62,9 +62,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary-subtle rounded' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-regular fa-folder-open"></i> Programmatori
+                                <a class="nav-link text-dark {{ Route::currentRouteName() == 'admin.comments.index' ? 'bg-secondary-subtle rounded' : '' }}"
+                                    href="{{ route('admin.comments.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> comments
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-secondary-subtle rounded' : '' }}"
+                                    href="{{ route('admin.messages.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> messages
                                 </a>
                             </li>
                         </ul>
