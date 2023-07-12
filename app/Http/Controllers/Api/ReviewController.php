@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReviewStoreRequest;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -56,10 +57,15 @@ class ReviewController extends Controller
         }
     }
     
-    public function storeReview(Request $request) {
-        $data = $request->all();
+    public function storeReview(ReviewStoreRequest $request) {
+        $data = $request->validated();
         $review = new Review($data);
         $review->save();
         return response("ok");
+    }
+
+    public function retrieveDeveloperReviews(Request $request, $developer_id) {
+        $reviews = Review::where('user_id', $developer_id)->get();
+        return response()->json(compact('reviews'));
     }
 }

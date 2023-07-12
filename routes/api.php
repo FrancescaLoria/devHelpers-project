@@ -31,3 +31,4 @@ Route::get('/reviews/{AvgVote}', [ReviewController::class, 'index']);
 Route::get('/review/{comments}', [ReviewController::class, 'show']);
 Route::post('/reviews/store', [ReviewController::class, 'storeReview']);
 Route::post('/messages', [MessageApiController::class, 'store']);
+Route::get('developer_reviews/{developer_id}', [ReviewController::class, 'retrieveDeveloperReviews']);
