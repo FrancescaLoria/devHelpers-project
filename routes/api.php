@@ -28,3 +28,4 @@ Route::get('/technologies', [TechnologyController::class, 'index']);
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviews/{AvgVote}', [ReviewController::class, 'index']);
 Route::get('/review/{comments}', [ReviewController::class, 'show']);
+Route::post('/reviews/store', [ReviewController::class, 'storeReview']);
