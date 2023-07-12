@@ -1,12 +1,12 @@
 <section>
     <header>
         <h2 class="text-secondary">
-            {{ __('Profile Information') }}
+            {{ __('Informazioni del profilo') }}
         </h2>
 
-        <p class="mt-1 text-muted">
+        {{-- <p class="mt-1 text-muted">
             {{ __("Update your account's profile information and email address.") }}
-        </p>
+        </p> --}}
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
