@@ -67,6 +67,12 @@
                                     <i class="fa-regular fa-folder-open"></i> comments
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-secondary-subtle rounded' : '' }}"
+                                    href="{{ route('admin.messages.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> messages
+                                </a>
+                            </li>
                         </ul>
 
 
