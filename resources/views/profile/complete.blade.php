@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container bkg-index p-4">
+
         <form method="POST" action="{{ route('admin.dashboard.update') }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="my-3 d-flex justify-content-between align-items-center">
+            <div class=" d-flex justify-content-between align-items-center pb-4">
                 <h2>Completa il tuo profilo</h2>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Go to dashboard</a>
             </div>
@@ -54,7 +55,7 @@
                     <label for="desrcription" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                     <div class="col-md-6">
-                        <textarea name="description" id="description"rows="10">{{ $user->description }}</textarea>
+                        <textarea class="form-control" name="description" id="description"rows="10">{{ $user->description }}</textarea>
                     </div>
                 @endif
             </div>
@@ -66,7 +67,7 @@
                     <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('Skills') }}</label>
 
                     <div class="col-md-6">
-                        <textarea name="skills" id="skills">{{ $user->skills }}</textarea>
+                        <textarea class="form-control" name="skills" id="skills">{{ $user->skills }}</textarea>
                     </div>
                 @endif
             </div>
@@ -81,6 +82,8 @@
                 </div>
             </div>
         </form>
+
+
 
     </div>
 @endsection
