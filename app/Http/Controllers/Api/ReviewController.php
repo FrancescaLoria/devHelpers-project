@@ -55,4 +55,11 @@ class ReviewController extends Controller
             ]);
         }
     }
+    
+    public function storeReview(Request $request) {
+        $data = $request->all();
+        $review = new Review($data);
+        $review->save();
+        return response("ok");
+    }
 }
