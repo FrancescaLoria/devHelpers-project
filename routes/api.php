@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MessageApiController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\TechnologyController;
 use App\Http\Controllers\Api\UserController;
@@ -29,3 +30,4 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviews/{AvgVote}', [ReviewController::class, 'index']);
 Route::get('/review/{comments}', [ReviewController::class, 'show']);
 Route::post('/reviews/store', [ReviewController::class, 'storeReview']);
+Route::post('/messages', [MessageApiController::class, 'store']);
