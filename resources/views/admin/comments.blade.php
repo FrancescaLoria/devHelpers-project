@@ -6,15 +6,26 @@
     <h3>non ci sono recensioni</h3>
 @else
 
-@foreach ($reviews as $review)    
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"> {{$review->name}} </h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary"> {{$review->vote}} </h6>
-      <p class="card-text">{{ $review->comment }}</p>
-    </div>
-</div>
-@endforeach
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Voto</th>
+      <th scope="col">Recensione</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($reviews as $review)    
+      <tr>
+        <td> {{$review->name}} </td>
+        <td> {{$review->vote}} </td>
+        <td> {{$review->comment}} </td>
+        <td> {{$review->created_at}} </td>
+      </tr>
+    @endforeach
+  </tbody>
+</table>
 
 @endif
 
