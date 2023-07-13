@@ -64,13 +64,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark {{ Route::currentRouteName() == 'admin.comments.index' ? 'bg-secondary-subtle rounded' : '' }}"
                                     href="{{ route('admin.comments.index') }}">
-                                    <i class="fa-regular fa-folder-open"></i> comments
+                                    <i class="fa-regular fa-folder-open"></i> Recensioni
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-secondary-subtle rounded' : '' }}"
                                     href="{{ route('admin.messages.index') }}">
-                                    <i class="fa-regular fa-folder-open"></i> messages
+                                    <i class="fa-regular fa-folder-open"></i> Messaggi
                                 </a>
                             </li>
                         </ul>

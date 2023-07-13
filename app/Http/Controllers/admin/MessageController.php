@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
     public function index () {
-        $messages = Message::with('user')-> where('user_id',Auth::user()->id)->get();
+        $messages = Message::with('user')-> where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->get();
         // dd($messages);
         return view('admin.messages', compact('messages'));
     }

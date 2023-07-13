@@ -1,20 +1,32 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Recensioni</h1>
+<h1>Messaggi</h1>
 @if ($messages === '')
     <h3>non ci sono recensioni</h3>
 @else
 
-@foreach ($messages as $message)    
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"> {{$message->name}} {{$message->surname}}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary"> {{$message->email}} </h6>
-      <p class="card-text">{{ $message->request }}</p>
-    </div>
-</div>
-@endforeach
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">messaggio</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($messages as $message)    
+      <tr>
+        <td> {{$message->name}} </td>
+        <td> {{$message->email}} </td>
+        <td> {{$message->request}} </td>
+        <td> {{$message->created_at}} </td>
+      </tr>
+    @endforeach
+  </tbody>
+</table>
+
 
 @endif
 
