@@ -24,7 +24,12 @@ class UserController extends Controller
                 $totalVoteReviews += $developerReview->vote;
             }
 
-            $avgVote = round($totalVoteReviews / $numberOfReviews, 2);
+            if( $numberOfReviews > 0) {
+                $avgVote = round($totalVoteReviews / $numberOfReviews, 2);
+            } else {
+                $avgVote = 0;
+            }
+            
 
             $developer["avg_vote"] = $avgVote;
             $developer["total_review"] =$numberOfReviews;
