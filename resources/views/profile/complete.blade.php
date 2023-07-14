@@ -7,7 +7,7 @@
             @method('PUT')
             <div class=" d-flex justify-content-between align-items-center pb-4">
                 <h2>Completa il tuo profilo</h2>
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Go to dashboard</a>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Ritorna alla dashboard</a>
             </div>
 
             {{-- Github --}}
@@ -26,7 +26,7 @@
             {{-- Photo --}}
             <div class="mb-4 row">
                 @if (!$user->photo)
-                    <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
+                    <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
 
                     <div class="col-md-6">
                         <input id="photo" type="file" class="form-control" name="photo"
@@ -39,7 +39,7 @@
             {{-- Phone --}}
             <div class="mb-4 row">
                 @if (!$user->phone)
-                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Cellulare') }}</label>
 
                     <div class="col-md-6">
                         <input id="phone" type="text" class="form-control" name="phone"
@@ -52,7 +52,7 @@
             {{-- Description --}}
             <div class="mb-4 row">
                 @if (!$user->description)
-                    <label for="desrcription" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                    <label for="desrcription" class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}</label>
 
                     <div class="col-md-6">
                         <textarea class="form-control" name="description" id="description"rows="10">{{ $user->description }}</textarea>
@@ -64,7 +64,7 @@
             {{-- Skills --}}
             <div class="mb-4 row">
                 @if (!$user->skills)
-                    <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('Skills') }}</label>
+                    <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}</label>
 
                     <div class="col-md-6">
                         <textarea class="form-control" name="skills" id="skills">{{ $user->skills }}</textarea>
@@ -77,7 +77,7 @@
             <div class="mb-4 row mb-0">
                 <div class="mt-2">
                     <button type="submit" class="btn btn-primary">
-                        {{ __('Save') }}
+                        {{ __('Salva') }}
                     </button>
                 </div>
             </div>
