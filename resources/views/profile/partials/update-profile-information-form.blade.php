@@ -28,7 +28,7 @@
         @endif
 
         <div class="mb-2">
-            <label for="name">{{ __('Name') }}</label>
+            <label for="name">{{ __('Nome') }}</label>
             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name"
                 autocomplete="name" value="{{ old('name', $user->name) }}" autofocus>
             @error('name')
@@ -39,7 +39,7 @@
         </div>
 
         <div class="mb-2">
-            <label for="surname">{{ __('Surname') }}</label>
+            <label for="surname">{{ __('Cognome') }}</label>
             <input class="form-control @error('surname') is-invalid @enderror" type="text" name="surname"
                 id="surname" autocomplete="surname" value="{{ old('surname', $user->surname) }}" autofocus>
             @error('surname')
@@ -50,7 +50,7 @@
         </div>
 
         <div class="mb-2">
-            <label for="address">{{ __('Address') }}</label>
+            <label for="address">{{ __('Indirizzo') }}</label>
             <input class="form-control @error('address') is-invalid @enderror" type="text" name="address"
                 id="address" autocomplete="address" value="{{ old('address', $user->address) }}" autofocus>
             @error('address')
@@ -68,7 +68,7 @@
 
 
         <div class="mb-2">
-            <label for="photo" class="form-label">Photo</label>
+            <label for="photo" class="form-label">immagine</label>
             <input type="file" class="form-control" id="photo" name="photo">
 
             @if ($user->photo)
@@ -79,19 +79,19 @@
         </div>
 
         <div class="mb-2">
-            <label for="phone">{{ __('Phone') }}</label>
+            <label for="phone">{{ __('Cellulare') }}</label>
             <input class="form-control" type="text" name="phone" id="phone"
                 value="{{ old('phone', $user->phone) }}" autofocus autocomplete="phone">
         </div>
 
         <div class="mb-2">
-            <label for="description">{{ __('Description') }}</label>
+            <label for="description">{{ __('Descrizione') }}</label>
             <input class="form-control" type="text" name="description" id="description"
                 value="{{ old('description', $user->description) }}" autofocus>
         </div>
 
         <div class="mb-2">
-            <label for="skills">{{ __('Skills') }}</label>
+            <label for="skills">{{ __('Specializzazione') }}</label>
             <input class="form-control" type="text" name="skills" id="skills" autocomplete="skills"
                 value="{{ old('skills', $user->skills) }}" autofocus>
         </div>
@@ -112,7 +112,7 @@
             @enderror
 
             <div class="my-3">
-                <span class="mb-3">Technologies</span>
+                <span class="mb-3">Competenze</span>
                 @foreach ($technologies as $tech)
                     <div class="form-check">
                         <input class="form-check-input @error('techs') is-invalid @enderror" name="techs[]"
@@ -134,16 +134,16 @@
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-muted">
-                        {{ __('Your email address is unverified.') }}
+                        {{ __('Il tuo indirizzo email non è verificato.') }}
 
                         <button form="send-verification" class="btn btn-outline-dark">
-                            {{ __('Click here to re-send the verification email.') }}
+                            {{ __('clicca qui per reinviare un email di verifica.') }}
                         </button>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 text-success">
-                            {{ __('A new verification link has been sent to your email address.') }}
+                            {{ __('Un nuovo link di verifica è stato inviato al tuo indirizzo email.') }}
                         </p>
                     @endif
                 </div>
@@ -151,7 +151,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button class="btn btn-primary" type="submit">{{ __('Save') }}</button>
+            <button class="btn btn-primary" type="submit">{{ __('Salva') }}</button>
 
             @if (session('status') === 'profile-updated')
                 <script>
@@ -162,7 +162,7 @@
                         el.style.display = 'block';
                     }
                 </script>
-                <p id='profile-status' class="fs-5 text-muted">{{ __('Saved.') }}</p>
+                <p id='profile-status' class="fs-5 text-muted">{{ __('Salvato.') }}</p>
             @endif
         </div>
     </form>
