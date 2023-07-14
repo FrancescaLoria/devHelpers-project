@@ -25,7 +25,7 @@ class UserController extends Controller
             }
 
             if( $numberOfReviews > 0) {
-                $avgVote = round($totalVoteReviews / $numberOfReviews, 2);
+                $avgVote = ceil($totalVoteReviews / $numberOfReviews);
             } else {
                 $avgVote = 0;
             }
