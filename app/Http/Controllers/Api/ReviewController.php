@@ -47,7 +47,7 @@ class ReviewController extends Controller
             $developers = Review::join('users', 'reviews.user_id', '=', 'users.id')
             ->select('users.*',DB::Raw('COUNT(reviews.comment) AS count_comments'))
             ->groupBy('reviews.user_id')
-            ->having('count_comments', '>=', $comments)
+            ->orderBy('count_comments', $comments)
             ->get();
             
             return response()->json([
