@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\CompleteProfileController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MessageController;
+use App\Http\Controllers\Api\MostVotedController;
 use App\Http\Controllers\ProfileController;
 use Egulias\EmailValidator\Parser\Comment;
 use Illuminate\Support\Facades\Route;
