@@ -7,11 +7,11 @@
 
 
             <div class="left-side w-50 bkg-light p-3 rounded me-2">
-                <h1>{{ $user->name }} {{ $user->surname }}</h1>
-                <h6>Email: {{ $user->email }}</h6>
-                <p>Indirizzo: {{ $user->address }}</p>
+                <h2>{{ $user->name }} {{ $user->surname }}</h2>
+                <h6> {{ $user->email }}</h6>
+                <p><span class="fw-semibold">Indirizzo:</span> {{ $user->address }}</p>
                 <p>
-                    Github:
+                    <span class="fw-semibold">Github:</span>
                     @if ($user->github)
                         <span>{{ $user->github }}</span>
                     @else
@@ -19,7 +19,8 @@
                     @endif
                 </p>
                 <p>
-                    Cellulare:
+                    <span class="fw-semibold">Cellulare:</span>
+                    
                     @if ($user->phone)
                         <span>{{ $user->phone }}</span>
                     @else
@@ -27,19 +28,21 @@
                     @endif
                 </p>
                 <p>
-                    Specializzazione:
+                    <span class="fw-semibold">Specializzazione:</span>
+                    
                     @if ($user->skills)
                         <span>{{ $user->skills }}</span>
                     @else
-                        <span>Nessuna Specializzazione presente</span>
+                        <span>Nessuna specializzazione presente</span>
                     @endif
                 </p>
                 <p>
-                    Descrizione:
+                    <span class="fw-semibold">Descrizione:</span>
+                    
                     @if ($user->description)
                         <span>{{ $user->description }}</span>
                     @else
-                        <span>Non è presente una descrizione</span>
+                        <span>Nessuna descrizione presente</span>
                     @endif
                 </p>
                 
@@ -50,15 +53,26 @@
                     @endforeach
                 </div>
             </div>
-            <div class="right-side w-50 rounded">
-                <div class="developer-image d-flex justify-content-center">
+            <div class="right-side w-50">
+                <div class="developer-image d-flex justify-content-center pb-4">
                     @if ($user->photo)
                         <img width="200" src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->name }}">
                     @else
-                        <div class="w-25 p-5 bg-secondary text-white">
-                            immagine non presente :(
+                        <div class="w-50 p-5 bg-secondary text-white">
+                            <p>Immagine non presente :(</p>
                         </div>
                     @endif
+                </div>
+
+                <div class="complete-section text-center p-4 border border-light rounded">
+                    
+                    @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
+                    <h6>Vuoi raggiungere piú clienti??</h6>
+                    <h6>Finisci di completare il tuo profilo</h6>
+                    <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning">
+                        Completa il tuo profilo
+                    </a>
+
                 </div>
             </div>
     
@@ -68,13 +82,13 @@
         <div class="mt-4">
 
             <a href="{{ route('admin.profile.edit') }}" class="btn btn-dark me-2">
-                MOdifica
+                Modifica
             </a>
         
-            @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
+            {{-- @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
                 <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning">
                     Completa il tuo profilo
-                </a>
+                </a> --}}
         </div>
         </div>
        
