@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\MessageApiController;
+use App\Http\Controllers\Api\MostVotedController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\TechnologyController;
 use App\Http\Controllers\Api\UserController;
@@ -32,3 +33,5 @@ Route::get('/review/{comments}', [ReviewController::class, 'show']);
 Route::post('/reviews/store', [ReviewController::class, 'storeReview']);
 Route::post('/messages', [MessageApiController::class, 'store']);
 Route::get('developer_reviews/{developer_id}', [ReviewController::class, 'retrieveDeveloperReviews']);
+Route::get('/homepage', [MostVotedController::class, 'index']);
+

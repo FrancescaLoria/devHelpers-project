@@ -25,13 +25,13 @@ class UserController extends Controller
             }
 
             if( $numberOfReviews > 0) {
-                $avgVote = ceil($totalVoteReviews / $numberOfReviews);
+                $avgVote = intval($totalVoteReviews / $numberOfReviews);
             } else {
                 $avgVote = 0;
             }
             
 
-            $developer["avg_vote"] = $avgVote;
+            $developer["average_vote"] = $avgVote;
             $developer["total_review"] =$numberOfReviews;
         }
     }
