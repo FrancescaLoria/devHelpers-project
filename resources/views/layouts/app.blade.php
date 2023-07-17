@@ -25,7 +25,7 @@
 
         <nav class="navbar navbar-expand-md shadow-sm bkg-light">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('http://localhost:5174/') }}">
                  <div class="logo fw-bold">DevHelpers</div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
