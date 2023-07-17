@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="container m-4 ">
         <div class="d-flex justify-content-center">
 
@@ -20,7 +19,7 @@
                 </p>
                 <p>
                     <span class="fw-semibold">Cellulare:</span>
-                    
+
                     @if ($user->phone)
                         <span>{{ $user->phone }}</span>
                     @else
@@ -29,7 +28,7 @@
                 </p>
                 <p>
                     <span class="fw-semibold">Specializzazione:</span>
-                    
+
                     @if ($user->skills)
                         <span>{{ $user->skills }}</span>
                     @else
@@ -38,14 +37,14 @@
                 </p>
                 <p>
                     <span class="fw-semibold">Descrizione:</span>
-                    
+
                     @if ($user->description)
                         <span>{{ $user->description }}</span>
                     @else
                         <span>Nessuna descrizione presente</span>
                     @endif
                 </p>
-                
+
                 <div class="mt-4">
                     <h4>Competenze</h4>
                     @foreach ($user->technologies as $technology)
@@ -64,35 +63,33 @@
                     @endif
                 </div>
 
-                <div class="complete-section text-center p-4 border border-light rounded">
-                    
-                    @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
-                    <h6>Vuoi raggiungere piú clienti??</h6>
-                    <h6>Finisci di completare il tuo profilo</h6>
-                    <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning">
-                        Completa il tuo profilo
-                    </a>
+                @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
+                    <div class="complete-section text-center p-4 ">
 
-                </div>
+
+                        <h6>Vuoi raggiungere piú clienti??</h6>
+                        <h6>Finisci di completare il tuo profilo</h6>
+                        <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning">
+                            Completa il tuo profilo
+                        </a>
+
+                    </div>
+                @endif
             </div>
-    
-    
-    
+           
+
+
         </div>
         <div class="mt-4">
 
             <a href="{{ route('admin.profile.edit') }}" class="btn btn-dark me-2">
                 Modifica
             </a>
-        
+
             {{-- @if (!$user->github || !$user->description || !$user->photo || !$user->skills || !$user->phone)
                 <a href="{{ route('admin.dashboard.edit') }}" class="btn btn-warning">
                     Completa il tuo profilo
                 </a> --}}
         </div>
-        </div>
-       
-
-
-    @endif
+    </div>
 @endsection
